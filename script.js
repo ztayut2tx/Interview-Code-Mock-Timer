@@ -1,12 +1,7 @@
+var highScore = document.getElementById("highScore");
+var timeLeft = document.getElementById("timeLeft");
+var startBtn = document.getElementById("startBtn");
 
-var quizContainer = document.getElementById("quiz");
-var resultsContainer = document.getElementById("results");//
-var startBtn = document.querySelector("#start");
-var highScore = document.querySelector("#highScore");
-var timeLeft = document.querySelector("#timeLeft");
-var question = document.querySelector("#question");
-var answer = document.querySelector("#answers");
-var currentIndex = 0;
 
 var jsQuestions = [
     {
