@@ -12,42 +12,65 @@ var correctAnswer = document.getElementById("correctAnswer");
 var userScore = document.getElementById("userScore");
 var totalScore = document.getElementById("totalScore");
 var saveInitials = document.getElementById("saveInitials");
-
-
-
+var showScore = document.getElementById("showScore");
+var scoreList = document.getElementById("scoreList");
+var backBtn = document.getElementById("backBtn");
+var clrBtn = document.getElementById("clearBtn");
 
 var jsQuestions = [
-    {
-      question: "Who invented JavaScript?",
-      answers: {
-        a: "Douglas Crockford",
-        b: "Sheryl Sandberg",
-        c: "Brendan Eich"
-      },
-      correctAnswer: "c"
+  {
+    question: "Who invented JavaScript?",
+    answers: {
+      a: "Douglas Crockford",
+      b: "Sheryl Sandberg",
+      c: "Brendan Eich",
+      d: "Thomas Edison"
     },
-    {
-      question: "Which one of these is a JavaScript package manager?",
-      answers: {
-        a: "Node.js",
-        b: "TypeScript",
-        c: "npm"
-      },
-      correctAnswer: "c"
+    correctAnswer: "c"
+  },
+  {
+    question: "Which one of these is a JavaScript package manager?",
+    answers: {
+      a: "Node.js",
+      b: "TypeScript",
+      c: "npm",
+      d: "saywhat"
     },
-    {
-      question: "Which tool can you use to ensure code quality?",
-      answers: {
-        a: "Angular",
-        b: "jQuery",
-        c: "RequireJS",
-        d: "ESLint"
-      },
-      correctAnswer: "d"
-    }
-];
+    correctAnswer: "c"
+  },
+  {
+    question: "Which tool can you use to ensure code quality?",
+    answers: {
+      a: "Angular",
+      b: "jQuery",
+      c: "RequireJS",
+      d: "ESLint"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answers: {
+      a: "javascript",
+      b: "terminal/gitbash",
+      c: "For Loops",
+      d: "console log"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "The condition in an if / else statement is enclosed within",
+    answers: {
+      a: "qoutes",
+      b: "curly brackets",
+      c: "parentheses",
+      d: "square brackets"
+    },
+    correctAnswer: "b"
+  }];
 
-function displayQuestion(event){
+
+function displayQuestion(event) {
   event.preventDefault()
   console.log("Hello")
   question.textContent = jsQuestions[currentIndex].question
@@ -58,7 +81,7 @@ function displayQuestion(event){
   //append button to answers div
 }
 
-function selectAnswer(){
+function selectAnswer() {
   //everytime and answer is clicked
   //currentIndex++
   //Call displayQuestion()
