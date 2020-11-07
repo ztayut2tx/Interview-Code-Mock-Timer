@@ -19,27 +19,70 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-light bg-light">
-        <div id="highScore">Highscore</div>
-        <div id="timeLeft" text-align: right;>Time Left</div>
+    
+    <div class="container-fluid">
 
-    </nav>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4" id="quizZone">
+                <h1>Js Quiz Challenge</h1>
+                <p>Try to answer the following code-related questions within the time limit. Wrong answers will hurt
+                    your score, good luck!</p>
+                <button type="button" id="startBtn">Start Quiz</button>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="questionZone">
+                <div class="row">
+                    <h3 id="Question"></h3>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <button class="userInput" data-value="0" id="choice1"></button>
+                    </div>
+                    <div class="row">
+                        <button class="userInput" data-value="1" id="choice2"></button>
+                    </div>
+                    <div class="row">
+                        <button class="userInput" data-value="2" id="choice3"></button>
+                    </div>
+                    <div class="row">
+                        <button class="userInput" data-value="3" id="choice4"></button>
+                    </div>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            <br>
+            <div class="row">
+                <h2 id="correctAnswer"></h2>
+            </div>
+            <div class ="col-md-4"></div>
         </div>
-        <div class="col-md-4" id="quizArea">
-            <h1>Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-                answers will penalize your score/time by 10 seconds!</p>
-            <button type="button" id="startBtn">Start Quiz</button>
+        <div class ="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="userScore">
+                <h3>All Done!</h3>
+                <h4 id="totalScore">Your total Score is: </h4>
+                <h5>Enter your initials:</h5>
+                <input type="text" id="userInitials">
+                <button id="saveInitials">Save</button>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-4">
-        </div>
+
+        
     </div>
 
 
-
+    </div>
     <script src="script.js"></script>
 
 

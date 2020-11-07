@@ -1,6 +1,19 @@
 var highScore = document.getElementById("highScore");
 var timeLeft = document.getElementById("timeLeft");
 var startBtn = document.getElementById("startBtn");
+var quizZone = document.getElementById("quizZone");
+var questionZone = document.getElementById("questionZone");
+var question = document.getElementById("Question");
+var choice1 = document.getElementById("choice1");
+var choice2 = document.getElementById("choice2");
+var choice3 = document.getElementById("choice3");
+var choice4 = document.getElementById("choice4");
+var correctAnswer = document.getElementById("correctAnswer");
+var userScore = document.getElementById("userScore");
+var totalScore = document.getElementById("totalScore");
+var saveInitials = document.getElementById("saveInitials");
+
+
 
 
 var jsQuestions = [
