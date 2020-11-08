@@ -20,8 +20,20 @@
 
 <body>
     
-    <div class="container-fluid">
+    <div class="container-fluid" id = "startUp">
+        <div class = "row">
+            <div class = "col-md-6">
+                <p id = "highScore">View HighScores</p>
+            </div>
+            <div class = "col-md-4">
+                
+            </div>
+            <div class = "col-md-2">
+                <p id = "timeLeft">Time Left: 0</p>         
+            </div>
 
+        </div>
+        <
         <div class="row">
             <div class="col-md-4">
             </div>
@@ -39,12 +51,14 @@
             <div class="col-md-4"></div>
             <div class="col-md-4" id="questionZone">
                 <div class="row">
-                    <h3 id="Question"></h3>
+                    <div id="question">
+                        <p>""</p>
+                    </div>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="row">
                         <button class="userInput" data-value="0" id="choice1"></button>
                     </div>
@@ -58,22 +72,25 @@
                         <button class="userInput" data-value="3" id="choice4"></button>
                     </div>
                 </div>
-                <div class="col-md-8"></div>
+                <div class="col-md-4"></div>
             </div>
             <br>
             <div class="row">
                 <h2 id="correctAnswer"></h2>
             </div>
-            <div class ="col-md-4"></div>
+            <div class ="col-md-4">
+                
+            </div>
         </div>
-        <div class ="row">
+        <div class ="row" id= "results" style= "display: none;">
             <div class="col-md-4"></div>
             <div class="col-md-4" id="userScore">
                 <h3>All Done!</h3>
                 <h4 id="totalScore">Your total Score is: </h4>
                 <h5>Enter your initials:</h5>
+                <button class = "btn btn-info" id = "submitBtn">Save Your Score</button>
                 <input type="text" id="userInitials">
-                <button id="saveInitials">Save</button>
+                <button class="btn btn-info" id="clearBtn">Clear Scores</button>
             </div>
             <div class="col-md-4"></div>
         </div>

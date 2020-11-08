@@ -3,11 +3,12 @@ var timeLeft = document.getElementById("timeLeft");
 var startBtn = document.getElementById("startBtn");
 var quizZone = document.getElementById("quizZone");
 var questionZone = document.getElementById("questionZone");
-var question = document.getElementById("Question");
+var questionArray = document.getElementById("question");
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
+var showAnswer = document.getElementById("showAnswer");
 var correctAnswer = document.getElementById("correctAnswer");
 var userScore = document.getElementById("userScore");
 var totalScore = document.getElementById("totalScore");
@@ -16,6 +17,22 @@ var showScore = document.getElementById("showScore");
 var scoreList = document.getElementById("scoreList");
 var backBtn = document.getElementById("backBtn");
 var clrBtn = document.getElementById("clearBtn");
+var startUp = document.getElementById("startUp");
+var results = document.getElementById("results");
+var submitBtn = document.getElementById("submitBtn");
+var viewScores = document.getElementById("viewScores");
+
+
+var secondsLeft = 75;
+
+var onscreenQuestion = 0;
+var correctAnswer = 0;
+var incorrectAnswer = 0;
+
+questionZone.style.display = "na";
+showScore.style.display = "na";
+userScore.style.display = "na";
+
 
 var jsQuestions = [
   {
@@ -24,9 +41,9 @@ var jsQuestions = [
       a: "Douglas Crockford",
       b: "Sheryl Sandberg",
       c: "Brendan Eich",
-      d: "Thomas Edison"
+      d: "Thomas Edison",
+      correctAnswer: "c"
     },
-    correctAnswer: "c"
   },
   {
     question: "Which one of these is a JavaScript package manager?",
@@ -34,9 +51,9 @@ var jsQuestions = [
       a: "Node.js",
       b: "TypeScript",
       c: "npm",
-      d: "saywhat"
+      d: "saywhat",
+      correctAnswer: "c"
     },
-    correctAnswer: "c"
   },
   {
     question: "Which tool can you use to ensure code quality?",
@@ -44,9 +61,9 @@ var jsQuestions = [
       a: "Angular",
       b: "jQuery",
       c: "RequireJS",
-      d: "ESLint"
+      d: "ESLint",
+      correctAnswer: "d"
     },
-    correctAnswer: "d"
   },
   {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -54,9 +71,9 @@ var jsQuestions = [
       a: "javascript",
       b: "terminal/gitbash",
       c: "For Loops",
-      d: "console log"
+      d: "console log",
+      correctAnswer: "c"
     },
-    correctAnswer: "c"
   },
   {
     question: "The condition in an if / else statement is enclosed within",
@@ -64,34 +81,129 @@ var jsQuestions = [
       a: "qoutes",
       b: "curly brackets",
       c: "parentheses",
-      d: "square brackets"
+      d: "square brackets",
+      correctAnswer: "b"
     },
-    correctAnswer: "b"
   }];
 
+var lastQuestion = jsQuestions.length - 1;
+var currentQuestion = 0;
+var count = 0;
+var score = 0;
+var nameList = [];
 
-function displayQuestion(event) {
-  event.preventDefault()
-  console.log("Hello")
-  question.textContent = jsQuestions[currentIndex].question
+startBtn.addEventListener("click", runQuestions);
 
-  //answer: for each answer
-  //create a button tag
-  //display the content of each answer onto the button
-  //append button to answers div
+function startTimer() {
+  count = 60;
+  var timer = setInterval(function(){
+    if (count <1) {
+      renderScores();
+    }
+    count--;
+    timeLeft.textContent = count;
+  }, 1000);
+
 }
 
-function selectAnswer() {
-  //everytime and answer is clicked
-  //currentIndex++
-  //Call displayQuestion()
+function popQuestion() {
+  var quest = jsQuestions[onscreenQuestion];
+
+  questionArray.innerHTML = "<p>" + quest.question + "</p>";
+  a.innerHTML = quest.a;
+  b.innerHTML = quest.b;
+  c.innerHTML = quest.c;
+  d.innerHTML = quest.d;
+  console.log(popQuestion);
+
 }
-//jsQuestions[0].question will return "Who's invented JS"
-//jsQuestions[0].answers.b will return "Shery Sandberg"
 
-//startBtn.onClick = displayQuestion;
+function runQuestions(){
+  startTimer();
+  startUp.style.display = "none";
+  popQuestion();
+  quizZone.style.display = "block";
 
-//When start btn is clicked
-//first question display on page
-startBtn.addEventListener("click", displayQuestion);
+}
+
+function checkAnswer(answer) {
+  if (answer == jsQuestions[onscreenQuestion].correctAnswer) {
+    score = score += 20;
+    showAnswer.textContent = "Correct!"
+  }
+  else {
+    count = count -10;
+    showAnswer.textContent = "False"
+  }
+  if (onscreenQuestion < lastQuestion && count > 0) {
+    onscreenQuestion++
+    popQuestion()
+  }
+  else if (currentQuestion === lastQuestion || count === 0) {
+    
+    renderScores();
+  }
+}
+init();
+ function renderScores() {
+   clearInterval(timer);
+   quizZone.textContent = "";
+   timeLeft.style.display = "none";
+   results.style.display = "block";
+   showScore.textContent = score;
+   scoreList.innerHTML = "";
+
+   for(var i = 0; i < nameList.length; i++) {
+     var list = nameList[i];
+
+     var li = document.createElement("li");
+     li.textContent = list;
+     scoreList.appendChild(li);
+   }
+ }
+
+ function init(){
+   var storedNames = JSON.parse(localStorage.getItem("nameList"));
+   if(storedNames !== null){
+     nameList = storedNames;
+   }
+ }
+
+ function storedNames() {
+   localStorage.setItem("nameList", JSON.stringify(nameList));
+ }
+
+ submitBtn.addEventListener("click", function (event){
+   event.preventDefault();
+   var nameText = nameInput.value.trim();
+
+   if(nameText === "") {
+     return;
+   }
+
+   nameList.push(nameText + "-" + score);
+   nameInput.value = "";
+
+   storedNames();
+   renderScores();
+ });
+
+ function clearAll() {
+   window.localStorage.clear();
+   nameList = "";
+ }
+
+ clrBtn.addEventListener("click", function (event){
+   event.preventDefault();
+   clearAll();
+   renderScores();
+ })
+
+ showScore.addEventListener("click", showScore)
+
+ function showScore () {
+   startUp.style.display = "none";
+   results.style.display = "block";
+ }
+
 

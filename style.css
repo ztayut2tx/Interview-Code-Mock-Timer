@@ -1,0 +1,28 @@
+body {
+    background-color:#659dbd;
+}
+
+p {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+#timeLeft {
+    text-align: right;
+}
+
+#quizZone, #showScore, #questionZone {
+    text-align: center;
+}
+
+button {
+    background-color: #e8a87c;
+    color: #ffffff;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+#scoreList {
+    background-color: #ffddcc;
+}
+}
